@@ -1,9 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta http-equiv="refresh" content="5"> <!-- Auto-refresh setiap 5 detik -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Refresh Spreadsheet</title>
+    <style>
+        #spreadsheetContainer {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-  <iframe src="https://docs.google.com/spreadsheets/d/15aVVM4LuXpLkjc6Oq_T4HjnDykUegl1eiJZSyTUe1Rs/pubhtml" width="100%" height="600px"></iframe>
+
+    <div id="spreadsheetContainer">
+        <iframe id="spreadsheetFrame" src="https://docs.google.com/spreadsheets/d/15aVVM4LuXpLkjc6Oq_T4HjnDykUegl1eiJZSyTUe1Rs/pubhtml"></iframe>
+    </div>
+
+    <script>
+        function reloadData() {
+            let iframe = document.getElementById("spreadsheetFrame");
+            let src = iframe.src;
+            iframe.src = src + "&t=" + new Date().getTime(); // Tambah timestamp biar update
+        }
+
+        // Setiap 10 detik update tanpa reload seluruh halaman
+        setInterval(reloadData, 10000);
+    </script>
+
 </body>
 </html>
