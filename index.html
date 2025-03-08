@@ -26,8 +26,7 @@
     <script>
         function reloadData() {
             let iframe = document.getElementById("spreadsheetFrame");
-            let src = iframe.src;
-            iframe.src = src + "&t=" + new Date().getTime(); // Tambah timestamp biar update
+            iframe.contentWindow.location.reload(); // Reload iframe tanpa ubah URL
         }
 
         // Setiap 10 detik update tanpa reload seluruh halaman
