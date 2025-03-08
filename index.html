@@ -26,7 +26,8 @@
     <script>
         function reloadData() {
             let iframe = document.getElementById("spreadsheetFrame");
-            iframe.contentWindow.location.reload(); // Reload iframe tanpa ubah URL
+            let timestamp = new Date().getTime(); // Biar URL beda setiap kali
+            iframe.src = "https://docs.google.com/spreadsheets/d/15aVVM4LuXpLkjc6Oq_T4HjnDykUegl1eiJZSyTUe1Rs/pubhtml?t=" + timestamp;
         }
 
         // Setiap 10 detik update tanpa reload seluruh halaman
